@@ -39,7 +39,7 @@ export const Form = ({ onCardAdd }) => {
     const { title, tags, date, description, time } = state
 
     const inputData = {
-      title,
+      name: title,
       tags,
       date,
       time,
