@@ -49,9 +49,8 @@ export const Form = ({ onCardAdd }) => {
     try {
       const response = await fetch('https://trello-server-theta.vercel.app/api/card', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(inputData)
       })
