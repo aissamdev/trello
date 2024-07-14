@@ -5,7 +5,7 @@ import './Form.css'
 
 export const Form = ({ onCardAdd }) => {
   const INITIAL_STATE = {
-    title: '',
+    name: '',
     tags: Array(0),
     date: '',
     time: '00:00',
@@ -44,7 +44,7 @@ export const Form = ({ onCardAdd }) => {
       date,
       time,
       description,
-      boardId: modal.boardId
+      boardId: modal.id
     }
     try {
       const response = await fetch('https://trello-server-theta.vercel.app/api/card', {
