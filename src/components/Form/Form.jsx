@@ -24,11 +24,11 @@ export const Form = ({ onCardAdd }) => {
 
   const handleTagsChange = async (e) => {
     const { name, checked } = e.target
-    let prevTags = [...state.tags]
-    prevTags.push({ name, checked })
-    await setState(prevState => ({
-      ...prevState, tags: prevTags
-    }))
+    if (checked) {
+      await setState(prevState => ({
+        ...prevState, tags: [...prevState.tags, name]
+      }))
+    }
 
     await console.log(state)
   }
