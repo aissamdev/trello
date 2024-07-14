@@ -6,7 +6,7 @@ import './Form.css'
 export const Form = ({ onCardAdd }) => {
   const INITIAL_STATE = {
     name: '',
-    tags: Array(0),
+    tags: [],
     date: '',
     time: '00:00',
     description: ''
@@ -56,11 +56,12 @@ export const Form = ({ onCardAdd }) => {
       })
       const data = await response.json()
       console.log(data)
-      setState(INITIAL_STATE)
       onCardAdd()
       closeModal()
     } catch (error) {
       console.error('Error submitting form:', error)
+    } finally {
+      resetForm()
     }
   }
 
