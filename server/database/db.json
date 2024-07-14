@@ -1,0 +1,10 @@
+{
+  "boards": [
+    { "id": "1", "title": "a title" },
+    { "id": "2", "title": "another title" }
+  ],
+  "cards": [
+    { "id": "1", "boardId": "1", "title": "One card", "tags": ["red", "blue", "green"], "date": "2022-01-01", "time": "10:00" },
+    { "id": "2", "boardId": "2", "title": "Another card", "tags": ["red", "blue"], "date": "2022-01-01", "time": "10:00" }
+  ]
+}

@@ -1,0 +1,19 @@
+### GET cards
+GET https://trello-server-theta.vercel.app/api/card
+
+### POST card
+POST https://trello-server-theta.vercel.app/api/card
+Content-Type: application/json
+
+{
+  "id": "2",
+  "name": "title",
+  "tags": ["red", "blue"],
+  "description": "description",
+  "date": "2022-01-01",
+  "time": "10:00",
+  "boardId": "clyke1qmn0000mfj3mj67t5s9"
+}
+
+### GET boards
+GET https://trello-server-theta.vercel.app/api/board

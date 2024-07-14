@@ -1,0 +1,75 @@
+.dropdown {
+  position: static;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  width: fit-content;
+  overflow: auto;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+  padding: 2px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.dropdown-content a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+  border-bottom: 1px solid #000;
+}
+
+.dropdown-content a:hover {
+  background-color: #c6e6fe;
+}
+
+.dropdown-content.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #c9c9c9;
+}
+
+.dropbtn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  gap: 0.355rem;
+  margin: auto;
+  --cross-offset: 2.071px;
+}
+
+.dropbtn div {
+  background: black;
+  height: 1.5px;
+  width: 100%;
+  border-radius: 5px;
+  transition: all .5s;
+  transform-origin: left;
+}
+
+.dropbtn.open div:first-child {
+  transform: rotate(45deg) translate(var(--cross-offset), calc(-1*var(--cross-offset)));
+}
+.dropbtn.open div:nth-child(2) {
+  opacity: 0;
+}
+.dropbtn.open div:nth-child(3) {
+  transform: rotate(-45deg) translate(var(--cross-offset), var(--cross-offset));
+}
