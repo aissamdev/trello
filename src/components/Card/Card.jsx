@@ -9,8 +9,8 @@ export const Card = ({ title, tags, date, id, ID, handleChange }) => {
         <div className='card-tags'>
           {
             // Filter tags that are true and map their keys as the tag colors
-            tags.filter((tag) => tag.checked).map((tag, index) => {
-              return <div key={index} className={`tag ${tag.name}`} />
+            tags.map((tag, index) => {
+              return <div key={index} className={`tag ${tag}`} />
             })
           }
         </div>
