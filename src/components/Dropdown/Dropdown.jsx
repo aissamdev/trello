@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import './Dropdown.css'
 
-export const Dropdown = ({ children, items, id, ID, onCardDelete }) => {
+export const Dropdown = ({ children, items, id, onCardDelete }) => {
   const [open, setOpen] = useState(false)
 
   const className = open ? 'open' : ''
@@ -11,6 +11,7 @@ export const Dropdown = ({ children, items, id, ID, onCardDelete }) => {
     fetch('https://trello-server-theta.vercel.app/api/card/' + id, {
       method: 'DELETE'
     }).then(() => {
+      onCardDelete()
       setOpen(false)
     })
   }
@@ -31,6 +32,5 @@ Dropdown.propTypes = {
   children: PropTypes.node,
   items: PropTypes.array,
   id: PropTypes.string,
-  ID: PropTypes.string,
   onCardDelete: PropTypes.func
 }
