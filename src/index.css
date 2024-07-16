@@ -44,3 +44,16 @@ main {
   display: flex;
   gap: 20px;
 }
+
+.boards {
+  display: flex;
+}
+
+.boards-list {
+  display: flex;
+  gap: 20px;
+}
+
+.board-container {
+  list-style: none;
+}

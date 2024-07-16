@@ -1,91 +1,61 @@
-import { useEffect, useState } from 'react'
 import { Card } from './components/Card/Card.jsx'
 import { Board } from './components/Board/Board.jsx'
 import { Modal } from './components/Modal/Modal.jsx'
 import { Form } from './components/Form/Form.jsx'
+import { useCards } from './hooks/useCards.js'
+import { useBoards } from './hooks/useBoards.jsx'
 
 function App () {
-  const [loadingCards, setLoadingCards] = useState(true)
-  const [loadingBoards, setLoadingBoards] = useState(true)
-  const [boards, setBoards] = useState()
-  const [cards, setCards] = useState()
+  const { boards, loadingBoards } = useBoards()
+  const { cards, loadingCards } = useCards()
 
-  const fetchCards = async () => {
-    console.log('fetching cards...')
-    try {
-      const cardResponse = await fetch('https://trello-server-theta.vercel.app/api/card')
-      const cardData = await cardResponse.json()
-      setCards(cardData)
-      console.log(cardData)
-    } catch (error) {
-      console.error('Error fetching data:', error)
-    } finally {
-      setLoadingCards(false)
-    }
-  }
-
-  const fetchBoards = async () => {
-    console.log('fetching boards...')
-    try {
-      const boardResponse = await fetch('https://trello-server-theta.vercel.app/api/board')
-      const boardData = await boardResponse.json()
-      setBoards(boardData)
-    } catch (error) {
-      console.error('Error fetching boards:', error)
-    } finally {
-      setLoadingBoards(false)
-    }
-  }
-
-  useEffect(() => {
-    fetchBoards()
-    fetchCards()
-  }, [])
-
-  const handleChange = () => {
-    fetchBoards()
-    fetchCards()
-  }
-
-  if (loadingCards || loadingBoards) return <p>Loading...</p>
+  if (loadingBoards) return <p>Loading boards, please wait...</p>
 
   return (
     <main>
-      {
-        boards.map((board) => (
-          <Board
-            key={board.id}
-            boardTitle={board.name}
-            id={board.id}
-          >
-            {
-              cards.filter((card) => card.boardId === board.id).map((card) => {
-                return (
-                  <Card
-                    key={card.id}
-                    title={card.name}
-                    tags={card.tags}
-                    date={card.date}
-                    id={card.id}
-                    ID={board.id}
-                    handleChange={handleChange}
-                  />
-                )
-              })
-              /*
-              cards.length > 0
-                ? (board.cards.map((card) => (
-                  <Card key={card.id} title={card.title} tags={card.tags} date={card.date} id={card.id} ID={board.id} handleChange={handleChange} />
-                  )))
-                : (<p>No cards</p>)
-              */
-            }
-          </Board>
-        ))
-      }
+      <section className='boards'>
+        <ul className='boards-list'>
+          {
+            !boards
+              ? <p>No boards to show, create a new one</p>
+              : boards.map((board) => (
+                <li key={board.id} className='board-container'>
+                  <Board
+                    boardTitle={board.name}
+                    id={board.id}
+                  >
+                    {
+                      loadingCards
+                        ? <p>Loading cards, please wait...</p>
+                        : cards.filter((card) => card.boardId === board.id).map((card) => {
+                          return (
+                            <Card
+                              key={card.id}
+                              title={card.name}
+                              tags={card.tags}
+                              date={card.date}
+                              id={card.id}
+                            />
+                          )
+                        })
+                    }
+                  </Board>
+                </li>
+              ))
+          }
+
+          <li className='board-container'>
+            <Board
+              boardTitle='Add new board'>
+
+            </Board>
+          </li>
+        </ul>
+
+      </section>
 
       <Modal title='Add new card'>
-        <Form onCardAdd={handleChange} />
+        <Form />
       </Modal>
     </main>
   )

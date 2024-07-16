@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useModal } from '../../hooks/useModal.js'
 import './Form.css'
+import { useCards } from '../../hooks/useCards.js'
 
-export const Form = ({ onCardAdd }) => {
-  const INITIAL_STATE = {
+export const Form = () => {
+  const INITIAL_STATE = useRef({
     name: '',
     tags: [],
     date: '',
     time: '00:00',
     description: ''
-  }
+  })
   const { modal, closeModal } = useModal()
-  const [state, setState] = useState(INITIAL_STATE)
+  const [state, setState] = useState(INITIAL_STATE.current)
+  const { sendCard, sendingCard } = useCards()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -22,47 +24,32 @@ export const Form = ({ onCardAdd }) => {
     }))
   }
 
-  const handleTagsChange = async (e) => {
+  const handleTagsChange = (e) => {
     const { name, checked } = e.target
     if (checked) {
-      await setState(prevState => ({
+      setState(prevState => ({
         ...prevState, tags: [...prevState.tags, name]
       }))
     }
-
-    await console.log(state)
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
-    const { title, tags, date, description, time } = state
+    const { name, tags, date, description, time } = state
 
     const inputData = {
-      name: title,
+      name,
       tags,
       date,
       time,
       description,
       boardId: modal.id
     }
-    try {
-      const response = await fetch('https://trello-server-theta.vercel.app/api/card', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(inputData)
-      })
-      const data = await response.json()
-      console.log(data)
-      onCardAdd()
-      closeModal()
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    } finally {
-      resetForm()
-    }
+
+    sendCard(inputData)
+    resetForm()
+    closeModal()
   }
 
   const handleKeyDown = (e) => {
@@ -71,8 +58,9 @@ export const Form = ({ onCardAdd }) => {
     e.target.style.height = `${Math.min(e.target.scrollHeight, 116)}px`
   }
 
-  const resetForm = () => {
-    setState(INITIAL_STATE)
+  const resetForm = async () => {
+    await setState(INITIAL_STATE.current)
+    await console.log(state)
   }
 
   return (
@@ -84,8 +72,8 @@ export const Form = ({ onCardAdd }) => {
             <input
               type='text'
               id='title'
-              name='title'
-              value={state.title}
+              name='name'
+              value={state.name}
               onChange={handleChange}
               className='input'
               required
@@ -119,7 +107,6 @@ export const Form = ({ onCardAdd }) => {
                   type='checkbox'
                   id='red-checkbox'
                   name='red'
-                  checked={state.tags.red}
                   onChange={handleTagsChange}
                 />
               </li>
@@ -128,7 +115,6 @@ export const Form = ({ onCardAdd }) => {
                   type='checkbox'
                   id='blue-checkbox'
                   name='blue'
-                  checked={state.tags.blue}
                   onChange={handleTagsChange}
                 />
               </li>
@@ -137,7 +123,6 @@ export const Form = ({ onCardAdd }) => {
                   type='checkbox'
                   id='green-checkbox'
                   name='green'
-                  checked={state.tags.green}
                   onChange={handleTagsChange}
                 />
               </li>
@@ -175,7 +160,7 @@ export const Form = ({ onCardAdd }) => {
         </div>
       </div>
       <div className='btn-container'>
-        <button className='btn' type='submit'>Add card</button>
+        <button className='btn' type='submit'>{sendingCard ? 'Sending...' : 'Add Card'}</button>
       </div>
       <div className='btn-container'>
         <button className='btn' type='button' onClick={resetForm}>Reset</button>
@@ -185,5 +170,5 @@ export const Form = ({ onCardAdd }) => {
 }
 
 Form.propTypes = {
-  onCardAdd: PropTypes.func.isRequired
+  setCards: PropTypes.func
 }
