@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "zenstack": "2.2.4"
-  },
-  "dependencies": {
-    "@zenstackhq/runtime": "2.2.4"
-  }
-}

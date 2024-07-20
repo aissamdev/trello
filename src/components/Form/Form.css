@@ -21,6 +21,8 @@
 .placeholder {
   position: absolute;
   background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
   color: gray;
   left: var(--input-padding);
   padding: 0 4px;
@@ -38,7 +40,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 60px;
   align-items: center;
 }
 
@@ -46,14 +49,6 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-}
-
-.btn-container {
-  width: 100%;
-  display: flex;
-  flex-basis: 25%;
-  justify-content: center;
-  align-items: center;
 }
 
 .btn {
@@ -166,4 +161,11 @@
   flex-grow: 1;
   align-items: center;
   flex-basis: 33%;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

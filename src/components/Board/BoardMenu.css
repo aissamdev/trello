@@ -1,0 +1,85 @@
+.board-menu {
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  align-items: center;
+}
+
+.board-menu-icon {
+  cursor: pointer;
+  width: 25px;
+  padding: 2px 2px;
+  border-radius: 4px;
+  transition: .3s background-color;
+}
+
+.board-menu-icon:is(:hover, .open) {
+  background-color: #cbcbcb;
+}
+
+.board-menu-content {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.remove-icon, .sort-icon, .filter-icon {
+  z-index: -1;
+  cursor: pointer;
+  width: 17px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-30%, -50%);
+  transition: .3s right;
+  padding: 2px 2px;
+  border-radius: 4px;
+}
+
+:is(.remove-icon, .sort-icon, .filter-icon):hover {
+  background-color: #cbcbcb;
+}
+
+.remove-icon.open {
+  z-index: 1;
+  right: 25px;
+}
+
+.sort-icon.open {
+  z-index: 1;
+  right: 50px;
+}
+
+.sort-icon.sort {
+  background-color: #cbcbcb;
+}
+
+.filter-icon.open {
+  right: 75px;
+  z-index: 1;
+}
+
+.filter-icon.filter {
+  background-color: #cbcbcb;
+}
+
+.input-container.filter-input {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  right: 110px;
+  margin: 0;
+  transition: .2s opacity;
+}
+
+#filter {
+  width: 65px;
+  padding: 5px;
+}
+
+.input-container.filter-input.open.filter {
+  opacity: 1;
+  z-index: 1;
+  display: block;
+}

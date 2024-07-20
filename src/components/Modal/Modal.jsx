@@ -13,8 +13,11 @@ export const Modal = ({ title, children }) => {
       <div className='modal-content'>
         <div className='modal-header'>
           <h2 className='modal-title'>{title}</h2>
-          <div className='close-container'>
-            <img src='https://cdn-icons-png.flaticon.com/512/64/64498.png' alt='close' className='close-button' onClick={handleClick} />
+          <div className='close-container' onClick={handleClick}>
+            <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='close-button'>
+              <path strokeLinecap='round' strokeLinejoin='round' d='m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
+            </svg>
+
           </div>
         </div>
         <div className='modal-body'>

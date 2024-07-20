@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types'
 import { Dropdown } from '../Dropdown/Dropdown.jsx'
+import { memo } from 'react'
 import './Card.css'
 
-export const Card = ({ title, tags, date, id }) => {
+export const Card = memo(({ title, tags, date, id }) => {
   return (
     <div className='card'>
       <div className='card-header'>
         <div className='card-tags'>
           {
             // Filter tags that are true and map their keys as the tag colors
-            tags.map((tag) => {
-              return <div key={id + tag} className={`tag ${tag}`} />
+            tags.filter((tag) => tag[1] === true).map(([key, value]) => {
+              return <div key={id + key} className={`tag ${key}`} />
             })
           }
         </div>
@@ -23,13 +24,17 @@ export const Card = ({ title, tags, date, id }) => {
           <div />
         </Dropdown>
         <div className='deadline'>
-          <img src='https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/clock-icon.png' alt='deadline' className='deadline-img' />
+          <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='deadline-img'>
+            <path strokeLinecap='round' strokeLinejoin='round' d='M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' />
+          </svg>
           <span className='deadline-text'>{date}</span>
         </div>
       </div>
     </div>
   )
-}
+})
+
+Card.displayName = 'Card'
 
 Card.propTypes = {
   title: PropTypes.string,

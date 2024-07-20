@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { useModal } from '../../hooks/useModal.js'
 import './Form.css'
 import { useCards } from '../../hooks/useCards.js'
@@ -7,35 +7,39 @@ import { useCards } from '../../hooks/useCards.js'
 export const Form = () => {
   const INITIAL_STATE = useRef({
     name: '',
-    tags: [],
+    tags: { red: false, blue: false, green: false },
     date: '',
-    time: '00:00',
+    time: '',
     description: ''
   })
   const { modal, closeModal } = useModal()
   const [state, setState] = useState(INITIAL_STATE.current)
   const { sendCard, sendingCard } = useCards()
 
-  const handleChange = (e) => {
+  // Memoized resetForm
+  const resetForm = useCallback(() => {
+    setState(INITIAL_STATE.current)
+  }, [])
+
+  // Memoized event handlers
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target
     setState(prevState => ({
       ...prevState,
       [name]: value
     }))
-  }
+  }, [])
 
-  const handleTagsChange = (e) => {
+  const handleTagsChange = useCallback((e) => {
     const { name, checked } = e.target
-    if (checked) {
-      setState(prevState => ({
-        ...prevState, tags: [...prevState.tags, name]
-      }))
-    }
-  }
+    setState(prevState => ({
+      ...prevState,
+      tags: { ...prevState.tags, [name]: checked }
+    }))
+  }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault()
-
     const { name, tags, date, description, time } = state
 
     const inputData = {
@@ -50,18 +54,14 @@ export const Form = () => {
     sendCard(inputData)
     resetForm()
     closeModal()
-  }
+  }, [state, sendCard, closeModal, modal.id, resetForm])
 
-  const handleKeyDown = (e) => {
+  // Memoized handleKeyDown
+  const handleKeyDown = useCallback((e) => {
     e.target.style.height = 'inherit'
     e.target.style.height = `${e.target.scrollHeight}px`
     e.target.style.height = `${Math.min(e.target.scrollHeight, 116)}px`
-  }
-
-  const resetForm = async () => {
-    await setState(INITIAL_STATE.current)
-    await console.log(state)
-  }
+  }, [])
 
   return (
     <form className='add-form' onSubmit={handleSubmit}>
@@ -102,30 +102,17 @@ export const Form = () => {
               Colors
             </legend>
             <ul className='tags-list'>
-              <li className='tags-item'>
-                <input
-                  type='checkbox'
-                  id='red-checkbox'
-                  name='red'
-                  onChange={handleTagsChange}
-                />
-              </li>
-              <li className='tags-item'>
-                <input
-                  type='checkbox'
-                  id='blue-checkbox'
-                  name='blue'
-                  onChange={handleTagsChange}
-                />
-              </li>
-              <li className='tags-item'>
-                <input
-                  type='checkbox'
-                  id='green-checkbox'
-                  name='green'
-                  onChange={handleTagsChange}
-                />
-              </li>
+              {['red', 'blue', 'green'].map(color => (
+                <li key={color} className='tags-item'>
+                  <input
+                    type='checkbox'
+                    id={`${color}-checkbox`}
+                    checked={state.tags[color]}
+                    name={color}
+                    onChange={handleTagsChange}
+                  />
+                </li>
+              ))}
             </ul>
           </fieldset>
         </div>
@@ -159,11 +146,9 @@ export const Form = () => {
           </div>
         </div>
       </div>
-      <div className='btn-container'>
-        <button className='btn' type='submit'>{sendingCard ? 'Sending...' : 'Add Card'}</button>
-      </div>
-      <div className='btn-container'>
+      <div className='btns-container'>
         <button className='btn' type='button' onClick={resetForm}>Reset</button>
+        <button className='btn' type='submit'>{sendingCard ? 'Sending...' : 'Add Card'}</button>
       </div>
     </form>
   )

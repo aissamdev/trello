@@ -1,0 +1,9 @@
+.boards-list {
+  display: flex;
+  align-items: start;
+  gap: 20px;
+}
+
+.board-container {
+  list-style: none;
+}

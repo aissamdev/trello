@@ -1,14 +1,15 @@
 :root {
   font-family: Tahoma ,'Nature Spirit', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  color: rgb(0, 0, 0);
+  color: rgb(58, 59, 84);
   --input-padding: 10px;
   --yellow: #f8f427;
 }
 
 body {
+  font-size: 1rem;
   padding: 0;
   margin: 0;
-  background-color: #f6f0f0;
+  background-color: #CD5A91;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -23,11 +24,10 @@ body {
   justify-content: center;
   padding: 10px;
   z-index: 1;
-  box-shadow: 10px 0px 15px #fff;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #000000;
   margin: 0;
@@ -36,24 +36,34 @@ h1 {
 #root {
   flex-grow: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: end;
 }
 
-main {
+.sidebar {
+  color: white;
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  height: 100%;
+  align-items: center;
+  background-color: #9C446E;
+  border-right: 1px solid #ebd9e6;
+}
+
+.sidebar ul {
+  padding: 5px 5px;
+  margin: 0;
+}
+.sidebar li {
+  list-style: none;
 }
 
 .boards {
   display: flex;
-}
-
-.boards-list {
-  display: flex;
-  gap: 20px;
-}
-
-.board-container {
-  list-style: none;
+  align-items: start;
+  max-width: 90vw;
+  height: 90%;
+  gap: 50px;
+  overflow-y: hidden;
 }

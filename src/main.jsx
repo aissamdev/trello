@@ -7,12 +7,11 @@ import { BoardsProvider } from './contexts/BoardsContext.jsx'
 import { CardsProvider } from './contexts/CardsContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <BoardsProvider>
-      <CardsProvider>
-        <ModalProvider>
-          <App />
-        </ModalProvider>
-      </CardsProvider>
-    </BoardsProvider>
-
+  <BoardsProvider>
+    <CardsProvider>
+      <ModalProvider>
+        <App />
+      </ModalProvider>
+    </CardsProvider>
+  </BoardsProvider>
 )

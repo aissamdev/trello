@@ -15,7 +15,7 @@ const CardsProvider = ({ children }) => {
 
   const loadCards = async () => {
     const data = await getCards()
-    setCards(data)
+    setCards(data.map((card) => ({ ...card, tags: Object.entries(card.tags) })))
     setLoadingCards(false)
   }
 
@@ -35,10 +35,11 @@ const CardsProvider = ({ children }) => {
 
   useEffect(() => {
     loadCards()
+    setCards()
   }, [])
 
   return (
-    <CardsContext.Provider value={{ cards, loadCards, sendCard, removeCard, loadingCards, sendingCard, removingCard }}>
+    <CardsContext.Provider value={{ cards, setCards, loadCards, sendCard, removeCard, loadingCards, sendingCard, removingCard }}>
       {children}
     </CardsContext.Provider>
   )
