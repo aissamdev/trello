@@ -3,6 +3,7 @@
   flex-direction: row-reverse;
   position: relative;
   align-items: center;
+  width: 125px;
 }
 
 .board-menu-icon {

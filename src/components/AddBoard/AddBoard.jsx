@@ -1,4 +1,3 @@
-import './AddBoard.css'
 import { useState } from 'react'
 import { useBoards } from '../../hooks/useBoards.js'
 

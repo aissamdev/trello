@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useState, useRef, useCallback } from 'react'
 import { useModal } from '../../hooks/useModal.js'
-import './Form.css'
 import { useCards } from '../../hooks/useCards.js'
 
 export const Form = () => {

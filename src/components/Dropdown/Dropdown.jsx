@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import './Dropdown.css'
 import { useCards } from '../../hooks/useCards'
 
 export const Dropdown = ({ children, id }) => {

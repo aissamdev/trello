@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { getBoards } from '../actions/boards/getBoards'
 import { postBoard } from '../actions/boards/postBoard'
 import { deleteBoard } from '../actions/boards/deleteBoard'
+import { patchBoard } from '../actions/boards/patchBoard'
 
 const BoardsContext = createContext()
 
@@ -12,6 +13,7 @@ const BoardsProvider = ({ children }) => {
   const [loadingBoards, setLoadingBoards] = useState(true)
   const [sendingBoard, setSendingBoard] = useState(false)
   const [removingBoard, setRemovingBoard] = useState(false)
+  const [updatingBoard, setUpdatingBoard] = useState(false)
 
   const loadBoards = async () => {
     const data = await getBoards()
@@ -33,12 +35,19 @@ const BoardsProvider = ({ children }) => {
     setRemovingBoard(false)
   }
 
+  const updateBoard = async ({ id, data }) => {
+    setUpdatingBoard(true)
+    await patchBoard({ id, data })
+    loadBoards()
+    setUpdatingBoard(false)
+  }
+
   useEffect(() => {
     loadBoards()
   }, [])
 
   return (
-    <BoardsContext.Provider value={{ boards, loadBoards, sendBoard, removeBoard, loadingBoards, sendingBoard, removingBoard }}>
+    <BoardsContext.Provider value={{ boards, loadBoards, sendBoard, removeBoard, updateBoard, loadingBoards, sendingBoard, removingBoard, updatingBoard }}>
       {children}
     </BoardsContext.Provider>
   )

@@ -1,6 +1,5 @@
 import { Board } from '../Board/Board'
 import { useBoards } from '../../hooks/useBoards.js'
-import './BoardList.css'
 
 export const BoardList = () => {
   const { boards, loadingBoards } = useBoards()

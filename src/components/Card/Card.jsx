@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { Dropdown } from '../Dropdown/Dropdown.jsx'
 import { memo } from 'react'
-import './Card.css'
 
 export const Card = memo(({ title, tags, date, id }) => {
   return (

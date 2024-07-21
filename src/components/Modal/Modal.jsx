@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import { useModal } from '../../hooks/useModal.js'
-import './Modal.css'
 
 export const Modal = ({ title, children }) => {
   const { modal, closeModal } = useModal()
