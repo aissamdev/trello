@@ -1,0 +1,89 @@
+Date : 2024-07-21 23:21:00
+Directory : c:\Users\admin\Desktop\Projects\trello
+Total : 42 files,  44154 codes, 18 comments, 318 blanks, all 44490 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| XML        |          1 |     34,438 |          1 |          1 |     34,440 |
+| JSON       |          2 |      7,757 |          0 |          2 |      7,759 |
+| CSS        |          9 |      1,165 |          9 |        196 |      1,370 |
+| JavaScript |         28 |        772 |          8 |        114 |        894 |
+| HTML       |          1 |         17 |          0 |          1 |         18 |
+| Markdown   |          1 |          5 |          0 |          4 |          9 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                           |         42 |     44,154 |         18 |        318 |     44,490 |
+| . (Files)                                                                   |          6 |      7,807 |          1 |         10 |      7,818 |
+| src                                                                         |         36 |     36,347 |         17 |        308 |     36,672 |
+| src (Files)                                                                 |          3 |        651 |          9 |        114 |        774 |
+| src\actions                                                                 |          7 |         78 |          0 |          7 |         85 |
+| src\actions\boards                                                          |          4 |         46 |          0 |          4 |         50 |
+| src\actions\cards                                                           |          3 |         32 |          0 |          3 |         35 |
+| src\components                                                              |         17 |      1,037 |          7 |        145 |      1,189 |
+| src\components\AddBoard                                                     |          2 |         91 |          0 |         11 |        102 |
+| src\components\Board                                                        |          6 |        351 |          3 |         55 |        409 |
+| src\components\Card                                                         |          2 |        118 |          1 |         16 |        135 |
+| src\components\Dropdown                                                     |          2 |         96 |          0 |         14 |        110 |
+| src\components\Form                                                         |          2 |        290 |          3 |         37 |        330 |
+| src\components\Modal                                                        |          2 |         80 |          0 |         11 |         91 |
+| src\components\Sidebar                                                      |          1 |         11 |          0 |          1 |         12 |
+| src\contexts                                                                |          3 |        108 |          0 |         30 |        138 |
+| src\hooks                                                                   |          3 |         15 |          0 |          6 |         21 |
+| src\images                                                                  |          1 |     34,438 |          1 |          1 |     34,440 |
+| src\logic                                                                   |          2 |         20 |          0 |          5 |         25 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                    | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\admin\Desktop\Projects\trello\.eslintrc.cjs                        | JavaScript |         23 |          0 |          1 |         24 |
+| c:\Users\admin\Desktop\Projects\trello\README.md                            | Markdown   |          5 |          0 |          4 |          9 |
+| c:\Users\admin\Desktop\Projects\trello\index.html                           | HTML       |         17 |          0 |          1 |         18 |
+| c:\Users\admin\Desktop\Projects\trello\package-lock.json                    | JSON       |      7,715 |          0 |          1 |      7,716 |
+| c:\Users\admin\Desktop\Projects\trello\package.json                         | JSON       |         42 |          0 |          1 |         43 |
+| c:\Users\admin\Desktop\Projects\trello\src\App.jsx                          | JavaScript |         20 |          0 |          3 |         23 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\boards\deleteBoard.js    | JavaScript |         10 |          0 |          1 |         11 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\boards\getBoards.js      | JavaScript |          9 |          0 |          1 |         10 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\boards\patchBoard.js     | JavaScript |         14 |          0 |          1 |         15 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\boards\postBoard.js      | JavaScript |         13 |          0 |          1 |         14 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\cards\deleteCard.js      | JavaScript |         10 |          0 |          1 |         11 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\cards\getCards.js        | JavaScript |          9 |          0 |          1 |         10 |
+| c:\Users\admin\Desktop\Projects\trello\src\actions\cards\postCard.js        | JavaScript |         13 |          0 |          1 |         14 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\AddBoard\AddBoard.css | CSS        |         37 |          0 |          5 |         42 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\AddBoard\AddBoard.jsx | JavaScript |         54 |          0 |          6 |         60 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Board\Board.css       | CSS        |         90 |          0 |         14 |        104 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Board\Board.jsx       | JavaScript |         99 |          3 |         13 |        115 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Board\BoardList.css   | CSS        |          8 |          0 |          2 |         10 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Board\BoardList.jsx   | JavaScript |         24 |          0 |          4 |         28 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Board\BoardMenu.css   | CSS        |         73 |          0 |         13 |         86 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Board\BoardMenu.jsx   | JavaScript |         57 |          0 |          9 |         66 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Card\Card.css         | CSS        |         79 |          0 |         12 |         91 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Card\Card.jsx         | JavaScript |         39 |          1 |          4 |         44 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Dropdown\Dropdown.css | CSS        |         68 |          0 |          8 |         76 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Dropdown\Dropdown.jsx | JavaScript |         28 |          0 |          6 |         34 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Form\Form.css         | CSS        |        145 |          0 |         26 |        171 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Form\Form.jsx         | JavaScript |        145 |          3 |         11 |        159 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Modal\Modal.css       | CSS        |         50 |          0 |          7 |         57 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Modal\Modal.jsx       | JavaScript |         30 |          0 |          4 |         34 |
+| c:\Users\admin\Desktop\Projects\trello\src\components\Sidebar\Sidebar.jsx   | JavaScript |         11 |          0 |          1 |         12 |
+| c:\Users\admin\Desktop\Projects\trello\src\contexts\BoardsContext.jsx       | JavaScript |         49 |          0 |         12 |         61 |
+| c:\Users\admin\Desktop\Projects\trello\src\contexts\CardsContext.jsx        | JavaScript |         42 |          0 |         11 |         53 |
+| c:\Users\admin\Desktop\Projects\trello\src\contexts\ModalContext.jsx        | JavaScript |         17 |          0 |          7 |         24 |
+| c:\Users\admin\Desktop\Projects\trello\src\hooks\useBoards.js               | JavaScript |          5 |          0 |          2 |          7 |
+| c:\Users\admin\Desktop\Projects\trello\src\hooks\useCards.js                | JavaScript |          5 |          0 |          2 |          7 |
+| c:\Users\admin\Desktop\Projects\trello\src\hooks\useModal.js                | JavaScript |          5 |          0 |          2 |          7 |
+| c:\Users\admin\Desktop\Projects\trello\src\images\18773568_6035077.svg      | XML        |     34,438 |          1 |          1 |     34,440 |
+| c:\Users\admin\Desktop\Projects\trello\src\index.css                        | CSS        |        615 |          9 |        109 |        733 |
+| c:\Users\admin\Desktop\Projects\trello\src\logic\filter-cards.js            | JavaScript |          3 |          0 |          1 |          4 |
+| c:\Users\admin\Desktop\Projects\trello\src\logic\sort-by-tag.js             | JavaScript |         17 |          0 |          4 |         21 |
+| c:\Users\admin\Desktop\Projects\trello\src\main.jsx                         | JavaScript |         16 |          0 |          2 |         18 |
+| c:\Users\admin\Desktop\Projects\trello\vite.config.js                       | JavaScript |          5 |          1 |          2 |          8 |
+| Total                                                                       |            |     44,154 |         18 |        318 |     44,490 |
++-----------------------------------------------------------------------------+------------+------------+------------+------------+------------+
