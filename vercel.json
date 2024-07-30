@@ -1,36 +1,36 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/"
+      "source": "/",
+      "destination": "/"
     },
     {
-      "src": "/login",
-      "dest": "/login"
+      "source": "/login",
+      "destination": "/login"
     },
     {
-      "src": "/register",
-      "dest": "/register"
+      "source": "/register",
+      "destination": "/register"
     },
     {
-      "src": "/gemif",
-      "dest": "/gemif/inicio"
+      "source": "/gemif",
+      "destination": "/gemif/inicio"
     },
     {
-      "src": "/gemif/inicio",
-      "dest": "/gemif/inicio"
+      "source": "/gemif/inicio",
+      "destination": "/gemif/inicio"
     },
     {
-      "src": "/gemif/agenda",
-      "dest": "/gemif/agenda"
+      "source": "/gemif/agenda",
+      "destination": "/gemif/agenda"
     },
     {
-      "src": "/gemif/asignaturas",
-      "dest": "/gemif/asignaturas"
+      "source": "/gemif/asignaturas",
+      "destination": "/gemif/asignaturas"
     },
     {
-      "src": "/gemif/info",
-      "dest": "/gemif/info"
+      "source": "/gemif/info",
+      "destination": "/gemif/info"
     }
   ]
 }
