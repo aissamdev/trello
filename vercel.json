@@ -1,0 +1,36 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/"
+    },
+    {
+      "src": "/login",
+      "dest": "/login"
+    },
+    {
+      "src": "/register",
+      "dest": "/register"
+    },
+    {
+      "src": "/gemif",
+      "dest": "/gemif/inicio"
+    },
+    {
+      "src": "/gemif/inicio",
+      "dest": "/gemif/inicio"
+    },
+    {
+      "src": "/gemif/agenda",
+      "dest": "/gemif/agenda"
+    },
+    {
+      "src": "/gemif/asignaturas",
+      "dest": "/gemif/asignaturas"
+    },
+    {
+      "src": "/gemif/info",
+      "dest": "/gemif/info"
+    }
+  ]
+}
