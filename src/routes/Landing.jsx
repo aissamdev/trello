@@ -6,7 +6,7 @@ const Landing = () => {
     <Form method='post' className={styles.landing}>
       <header className={styles['landing-header']}>
         <div className={styles['landing-logo-container']}>
-          <img src='./src/logos/gemif-logo/only-icon/only-icon-white.svg' alt='logo' className={styles['landing-logo']} />
+          <img src='/src/logos/gemif-logo/only-icon/only-icon-white.svg' alt='logo' className={styles['landing-logo']} />
         </div>
         <div className={styles['landing-info']}>
           <h1 className={styles['landing-h1']}>GEMiF</h1>
