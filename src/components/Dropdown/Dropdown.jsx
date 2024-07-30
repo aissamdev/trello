@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useCards } from '../../hooks/useCards'
 
-export const Dropdown = ({ children, id }) => {
+export const Dropdown = ({ children, id, userId }) => {
   const [open, setOpen] = useState(false)
   const { removeCard, removingCard } = useCards()
 
@@ -10,7 +10,7 @@ export const Dropdown = ({ children, id }) => {
 
   const handleClick = (e) => {
     if (e.target.name === 'remove') {
-      removeCard(id)
+      removeCard({ id })
     }
     setOpen(false)
   }
@@ -29,5 +29,6 @@ export const Dropdown = ({ children, id }) => {
 Dropdown.propTypes = {
   children: PropTypes.node,
   items: PropTypes.array,
-  id: PropTypes.string
+  id: PropTypes.string,
+  userId: PropTypes.string
 }

@@ -1,27 +1,31 @@
 import { useState } from 'react'
 import { useBoards } from '../../hooks/useBoards.js'
+import { useAuth } from '../../hooks/useAuth.js'
 
 export const AddBoard = () => {
   const [open, setOpen] = useState(false)
-  const [state, setState] = useState({ name: '' })
   const { sendBoard } = useBoards()
+  const [state, setState] = useState({ name: '' })
+
+  const { user } = useAuth()
 
   const className = open ? ' open' : ''
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    sendBoard(state)
+    sendBoard({ input: state })
     setOpen(!open)
-    setState({ name: '' })
+    setState(prevState => ({ ...prevState, name: '' }))
   }
   const handleChange = (e) => {
     const { name, value } = e.target
-    setState({ ...state, [name]: value })
+    setState(prevState => ({ ...prevState, [name]: value }))
   }
 
   const handleClose = () => {
     setOpen(!open)
-    setState({ name: '' })
+    setState(prevState => ({ ...prevState, name: '' }))
+    console.log(user)
   }
 
   return (

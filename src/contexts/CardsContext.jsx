@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { getCards } from '../actions/cards/getCards'
 import { postCard } from '../actions/cards/postCard'
@@ -13,22 +13,38 @@ const CardsProvider = ({ children }) => {
   const [sendingCard, setSendingCard] = useState(false)
   const [removingCard, setRemovingCard] = useState(false)
 
-  const loadCards = async () => {
-    const data = await getCards()
-    setCards(data.map((card) => ({ ...card, tags: Object.entries(card.tags) })))
+  const loadCards = useCallback(async () => {
+    const fetchedCards = await getCards()
+    setCards({ ...fetchedCards, data: fetchedCards.data.map((card) => ({ ...card, attributes: { ...card.attributes, tags: Object.entries(card.attributes.tags) } })) })
     setLoadingCards(false)
-  }
+  }, [])
 
-  const sendCard = async (data) => {
+  const sendCard = async ({ input, boardId }) => {
     setSendingCard(true)
-    await postCard(data)
+
+    const info = {
+      data: {
+        type: 'card',
+        attributes: input,
+        relationships: {
+          board: {
+            data: {
+              type: 'board',
+              id: boardId
+            }
+          }
+        }
+      }
+    }
+
+    await postCard({ input: info })
     loadCards()
     setSendingCard(false)
   }
 
-  const removeCard = async (id) => {
+  const removeCard = async ({ id }) => {
     setRemovingCard(true)
-    await deleteCard(id)
+    await deleteCard({ id })
     loadCards()
     setRemovingCard(false)
   }
@@ -36,7 +52,7 @@ const CardsProvider = ({ children }) => {
   useEffect(() => {
     loadCards()
     setCards()
-  }, [])
+  }, [loadCards])
 
   return (
     <CardsContext.Provider value={{ cards, setCards, loadCards, sendCard, removeCard, loadingCards, sendingCard, removingCard }}>

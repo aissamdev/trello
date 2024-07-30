@@ -20,17 +20,17 @@ export const Board = memo(({ boardTitle, id }) => {
 
   // Memoize the handleRemove function
   const handleRemove = useCallback(async () => {
-    removeBoard(id)
+    removeBoard({ id })
   }, [id, removeBoard])
 
   // Memoize filtered and sorted cards
   const filteredCards = useMemo(() => {
     if (!cards) return []
-    return filter.active ? filterCards(cards, filter.keyword) : cards
+    return filter.active ? { ...cards, data: filterCards(cards, filter.keyword) } : cards
   }, [cards, filter])
 
   const sortedCards = useMemo(() => {
-    return sort ? sortByTag(filteredCards) : filteredCards
+    return sort ? { ...filteredCards, data: sortByTag(filteredCards) } : filteredCards
   }, [filteredCards, sort])
 
   const handleEditTitle = useCallback(() => {
@@ -42,8 +42,7 @@ export const Board = memo(({ boardTitle, id }) => {
   }, [setEditTitle])
 
   const handleUpdateTitle = useCallback(() => {
-    console.log(editTitle.value)
-    updateBoard({ id, data: { name: editTitle.value } })
+    updateBoard({ id, input: { name: editTitle.value } })
     setEditTitle(prevState => ({ ...prevState, active: false }))
   }, [editTitle, id, setEditTitle, updateBoard])
 
@@ -86,12 +85,12 @@ export const Board = memo(({ boardTitle, id }) => {
       <div className='board-content'>
         {loadingCards
           ? <p>Loading cards, please wait...</p>
-          : sortedCards.filter((card) => card.boardId === id).map((card) => (
+          : sortedCards.data.filter((card) => card.attributes.boardId === id).map((card) => (
             <Card
               key={card.id}
-              title={card.name}
-              tags={card.tags}
-              date={card.date}
+              title={card.attributes.name}
+              tags={card.attributes.tags}
+              date={card.attributes.date}
               id={card.id}
             />
           )

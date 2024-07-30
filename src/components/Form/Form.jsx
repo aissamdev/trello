@@ -46,11 +46,9 @@ export const Form = () => {
       tags,
       date,
       time,
-      description,
-      boardId: modal.id
+      description
     }
-
-    sendCard(inputData)
+    sendCard({ input: inputData, boardId: modal.id })
     resetForm()
     closeModal()
   }, [state, sendCard, closeModal, modal.id, resetForm])

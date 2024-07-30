@@ -13,14 +13,14 @@ export const CalendarItem = ({ item }) => {
       </div>
       <ul className='calendar-item-content'>
         {
-          cards.filter((card) => {
-            const cardDate = new Date(card.date)
+          cards.data.filter((card) => {
+            const cardDate = new Date(card.attributes.date)
             return cardDate.getFullYear() === item.date.getFullYear() &&
               cardDate.getMonth() === item.date.getMonth() &&
               cardDate.getDate() === item.date.getDate()
           }).map((card) => (
             <li key={card.id}>
-              {card.name}
+              {card.attributes.name}
             </li>
           ))
         }

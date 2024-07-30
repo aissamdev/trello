@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { getBoards } from '../actions/boards/getBoards'
 import { postBoard } from '../actions/boards/postBoard'
@@ -15,36 +15,56 @@ const BoardsProvider = ({ children }) => {
   const [removingBoard, setRemovingBoard] = useState(false)
   const [updatingBoard, setUpdatingBoard] = useState(false)
 
-  const loadBoards = async () => {
+  const loadBoards = useCallback(async () => {
     const data = await getBoards()
     setBoards(data)
     setLoadingBoards(false)
-  }
+  }, [])
 
-  const sendBoard = async (data) => {
+  const sendBoard = async ({ input }) => {
     setSendingBoard(true)
-    await postBoard(data)
+    const info = {
+      data: {
+        type: 'board',
+        attributes: input,
+        relationships: {
+          user: {
+            data: {
+              type: 'user',
+              id: sessionStorage.getItem('id')
+            }
+          }
+        }
+      }
+    }
+    await postBoard({ input: info })
     loadBoards()
     setSendingBoard(false)
   }
 
-  const removeBoard = async (id) => {
+  const removeBoard = async ({ id }) => {
     setRemovingBoard(true)
-    await deleteBoard(id)
+    await deleteBoard({ id })
     loadBoards()
     setRemovingBoard(false)
   }
 
-  const updateBoard = async ({ id, data }) => {
+  const updateBoard = async ({ id, input }) => {
     setUpdatingBoard(true)
-    await patchBoard({ id, data })
+    const info = {
+      data: {
+        type: 'board',
+        attributes: input
+      }
+    }
+    await patchBoard({ id, input: info })
     loadBoards()
     setUpdatingBoard(false)
   }
 
   useEffect(() => {
     loadBoards()
-  }, [])
+  }, [loadBoards])
 
   return (
     <BoardsContext.Provider value={{ boards, loadBoards, sendBoard, removeBoard, updateBoard, loadingBoards, sendingBoard, removingBoard, updatingBoard }}>

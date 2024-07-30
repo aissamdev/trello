@@ -1,12 +1,12 @@
-export const patchBoard = async ({ id, data }) => {
-  console.log({ id, data })
+export const patchBoard = async ({ id, input }) => {
   try {
-    await fetch(`https://trello-server-theta.vercel.app/api/board/${id}`, {
+    await fetch(`https://trello-server-gules.vercel.app/api/board/${id}`, {
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(input)
     })
   } catch (error) {
     console.error('Error patching board:', error)

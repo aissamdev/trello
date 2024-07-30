@@ -6,7 +6,7 @@ const TAG_RELEVANCE = {
 
 const cardRelevance = (card) => {
   let relevance = 0
-  card.tags.filter((tag) => tag[1] === true).forEach(([key, value]) => {
+  card.attributes.tags.filter((tag) => tag[1] === true).forEach(([key, value]) => {
     relevance += TAG_RELEVANCE[key]
   })
 
@@ -14,7 +14,7 @@ const cardRelevance = (card) => {
 }
 
 export const sortByTag = (cards) => {
-  return cards.toSorted((a, b) => {
+  return cards.data.toSorted((a, b) => {
     return cardRelevance(b) - cardRelevance(a)
   })
 }

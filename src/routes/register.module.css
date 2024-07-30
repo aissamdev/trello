@@ -1,0 +1,93 @@
+.register {
+  font-family: "Comme ExtraBold";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #e0efff, #e0efff) padding-box, linear-gradient(to right, #3a3ad9, #b716b5) border-box;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+.h1 {
+  margin: auto;
+}
+
+.year {
+  display: flex;
+  flex-direction: column;
+}
+
+#year {
+  width: 20%;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  font-family: inherit;
+  padding: 10px 10px;
+  background-color: #040046;
+  color: #fff;
+  border-radius: 5px;
+  border: 3px solid #6ee2f5;
+  transition: 0.3s background-position, 0.3s color;
+}
+
+.button:hover {
+  background-position: -110px 0, -110px 0;
+  color: #fff7;
+}
+
+.login {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.register a {
+  text-decoration: none;
+  color: #4d2ea0;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 2px solid gray;
+  outline: none;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+:is(.password-icon, .email-icon) {
+  position: absolute;
+  right: 0px;
+  top: 9px;
+  width: 20px;
+  z-index: 10;
+}

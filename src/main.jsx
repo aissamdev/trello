@@ -1,17 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import { AuthProvider } from './contexts/AuthContext.jsx'
 import './index.css'
-import { ModalProvider } from './contexts/ModalContext.jsx'
-import { BoardsProvider } from './contexts/BoardsContext.jsx'
-import { CardsProvider } from './contexts/CardsContext.jsx'
+import App from './App.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BoardsProvider>
-    <CardsProvider>
-      <ModalProvider>
-        <App />
-      </ModalProvider>
-    </CardsProvider>
-  </BoardsProvider>
+  <AuthProvider>
+    <App />
+  </AuthProvider>
 )

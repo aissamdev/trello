@@ -1,9 +1,11 @@
-export const deleteCard = async (id) => {
+export const deleteCard = async ({ id }) => {
   try {
-    const response = await fetch(`https://trello-server-theta.vercel.app/api/card/${id}`, {
-      method: 'DELETE'
+    await fetch(`https://trello-server-gules.vercel.app/api/card/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      }
     })
-    await response.json()
   } catch (error) {
     console.log(error)
   }
