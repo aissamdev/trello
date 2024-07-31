@@ -1,36 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/"
-    },
-    {
-      "source": "/login",
-      "destination": "/login"
-    },
-    {
-      "source": "/register",
-      "destination": "/register"
-    },
-    {
-      "source": "/gemif",
-      "destination": "/gemif/inicio"
-    },
-    {
-      "source": "/gemif/inicio",
-      "destination": "/gemif/inicio"
-    },
-    {
-      "source": "/gemif/agenda",
-      "destination": "/gemif/agenda"
-    },
-    {
-      "source": "/gemif/asignaturas",
-      "destination": "/gemif/asignaturas"
-    },
-    {
-      "source": "/gemif/info",
-      "destination": "/gemif/info"
-    }
+      {"source": "/(.*)", "destination": "/"}
   ]
 }
